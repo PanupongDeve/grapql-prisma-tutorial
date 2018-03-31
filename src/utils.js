@@ -13,6 +13,7 @@ function getUserId(context) { // middleware สำหรับ check auth
 }
 
 
+
 module.exports = {
   APP_SECRET,
   getUserId

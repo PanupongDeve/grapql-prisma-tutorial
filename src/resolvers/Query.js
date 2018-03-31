@@ -6,8 +6,9 @@ function feed(parent, args, context, info) {
     const where = filter
       ? { OR: [{ url_contains: filter }, { description_contains: filter }] }
       : {}
-  
-    return context.db.query.links({ first, skip, where }, info)
+    const allLinks = () => context.db.query.links({ first, skip, where }, info)
+    console.log('Data', { links: allLinks});
+    return { links: allLinks}
   }
 
   function showuser(parent, args, context, info) {
