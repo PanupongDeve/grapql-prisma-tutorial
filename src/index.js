@@ -3,13 +3,12 @@ const { Prisma } = require('prisma-binding')
 const Query = require('./resolvers/Query')
 const Mutation = require('./resolvers/Mutation')
 const Subscription = require('./resolvers/Subscription')
-const Feed = require('./resolvers/Feed')
+
 
 const resolvers = {
   Query,
   Mutation,
-  Subscription,
-  Feed 
+  Subscription
 }
 
 const server = new GraphQLServer({
@@ -26,7 +25,18 @@ const server = new GraphQLServer({
   }),
 })
 
-server.start(() => console.log('Server is running on http://localhost:4000'))
+const PORT = process.env.PORT || 5000
+
+const options = {
+  port: PORT,
+  endpoint: '/graphql',
+  subscriptions: '/subscriptions',
+  playground: '/playground',
+}
+
+server.start(options, ({ port }) => console.log(`Server started, listening on port ${port} for incoming requests.`))
+
+
 
 
 
