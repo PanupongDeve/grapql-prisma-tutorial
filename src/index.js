@@ -31,7 +31,7 @@ const options = {
   port: PORT,
   endpoint: '/graphql',
   subscriptions: '/subscriptions',
-  playground: '/playground',
+  playground: '/',
 }
 
 server.start(options, ({ port }) => console.log(`Server started, listening on port ${port} for incoming requests.`))
